@@ -14,7 +14,7 @@ var devices = [
         ]),
     },
     {
-        name:"空调":
+        name:"空调",
         commands:[
         {
             label:"开关",
