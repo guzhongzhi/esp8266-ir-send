@@ -47,7 +47,7 @@ void handleRoot()
               "<div>Loading</div>"
               "<script src='https://libs.baidu.com/jquery/2.0.0/jquery.min.js'></script>"
               "<script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js'></script>"
-              "<script src='://esp8266.gulusoft.com/config.js'></script>"
+              "<script src='http://esp8266.gulusoft.com/config.js'></script>"
               "<div id='content'></div>"
               "</body>"
               "</html>");

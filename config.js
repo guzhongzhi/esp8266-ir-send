@@ -17,7 +17,7 @@ var Devices = [
 jQuery(document).ready(function(){
     var content = '<ul data-bind="foreach: Devices"> \
     <li> \
-        The current item is: <b data-bind="text: $name"></b> \
+        The current item is: <b data-bind="text: name"></b> \
     </li> \
 </ul>'
         jQuery('#content').html(content);
