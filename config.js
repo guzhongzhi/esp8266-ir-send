@@ -21,7 +21,7 @@ jQuery(document).ready(function(){
         <b data-bind="text: commands"></b> \
         <ul data-bind="foreach: commands" class="commands"> \
             <li> \
-            <span data-bind="text: label"> </span> \
+            <a href="javascript:void(0)" class="commands-item" data-bind="attr: {data:value,text:label}"> </a> \
             </li> \
         </ul> \
     </li> \
