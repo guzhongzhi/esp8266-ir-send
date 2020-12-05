@@ -44,10 +44,11 @@ void handleRoot()
               "<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\">"
               "<body>"
               "<h1>控制中心</h1>"
-              "<div>Loading</div>"
+              "<div id='loading'>Loading</div>"
               "<script src='https://libs.baidu.com/jquery/2.0.0/jquery.min.js'></script>"
               "<script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js'></script>"
               "<script src='http://esp8266.gulusoft.com/config.js'></script>"
+              "<link rel='stylesheet' type='text/css' href='http://esp8266.gulusoft.com/main.css'>"
               "<div id='content'></div>"
               "</body>"
               "</html>");

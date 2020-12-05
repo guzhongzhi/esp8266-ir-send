@@ -15,14 +15,23 @@ var devices = [
     }
 ]
 jQuery(document).ready(function(){
-    var content = '<ul data-bind="foreach: devices"> \
+    var content = '<ul data-bind="foreach: devices" class="devices"> \
     <li> \
-        The current item is: <b data-bind="text: name"></b> \
+        <b data-bind="text: name"></b> \
+        <ul data-bind="foreach: commands" class="commands"> \
+            <li> \
+                <a href="javascript:void(0)" class="commands-item" data-bind="attr: {data-value:value}"><span data-bind="text: label"> </span> </a> \
+            </li> \
+        </ul> \
     </li> \
 </ul>'
         jQuery('#content').html(content);
+        jQuery('#loading').hide();
         
         ko.applyBindings({devices:devices}, document.getElementById("content"));
 
-    
+        jQuery(".commands-item").click(function(){
+            console.log(this);
+            
+        })
 })
