@@ -4,7 +4,7 @@ ul,li {
 }
 .commands li {
     float:left;
-    width:50px;
+    width:18%;
     padding:10px;
     list-style:none;
 }
