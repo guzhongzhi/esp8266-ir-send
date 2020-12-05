@@ -45,12 +45,11 @@ void handleRoot()
               "<meta name='viewport' content='width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'/>"
               "<body>"
               "<div class='title'><h1>控制中心</h1></div>"
-              "<div id='loading'>Loading</div>"
               "<script src='https://libs.baidu.com/jquery/2.0.0/jquery.min.js'></script>"
               "<script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js'></script>"
               "<script src='http://esp8266.gulusoft.com/config.js'></script>"
               "<link rel='stylesheet' type='text/css' href='http://esp8266.gulusoft.com/main.css'>"
-              "<div id='content'></div>"
+              "<div id='content'><div id='loading'>Loading</div></div>"
               "</body>"
               "</html>");
 }

@@ -198,7 +198,7 @@ jQuery(document).ready(function() {
         </ul> \
     </li> \
 </ul>'
-    jQuery('#content').html(content);
+    jQuery('#content').append(content);
     jQuery('#loading').hide();
 
     ko.applyBindings({
