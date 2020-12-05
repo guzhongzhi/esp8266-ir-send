@@ -20,6 +20,9 @@ ul,li {
 
 .device {
     clear:both;
+    margin-top:10px;
+    color:red;
+    font-weight:bold;
 }
 
 a {
