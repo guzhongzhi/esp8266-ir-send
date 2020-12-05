@@ -1,3 +1,7 @@
+ul,li {
+    margin:0px;
+    padding:0px;
+}
 .commands li {
     float:left;
     width:50px;
