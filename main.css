@@ -13,3 +13,7 @@
 .devices {
     list-style:none;
 }
+
+.device {
+    clear:both;
+}

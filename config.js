@@ -141,7 +141,7 @@ var devices = [{
 }]
 jQuery(document).ready(function() {
     var content = '<ul data-bind="foreach: devices" class="devices"> \
-    <li> \
+    <li class="device"> \
         <b data-bind="text: name"></b> \
         <ul data-bind="foreach: commands" class="commands"> \
             <li> \
