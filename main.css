@@ -2,9 +2,14 @@
     float:left;
     width:50px;
     padding:10px;
-    list-style:none
+    list-style:none;
 }
 
 .commands {
-    list-style:none,
+    list-style:none;
+    clear:both;
+}
+
+.devices {
+    list-style:none;
 }
