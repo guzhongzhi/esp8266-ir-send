@@ -32,7 +32,7 @@ jQuery(document).ready(function(){
 
         jQuery(".commands-item").click(function(){
             console.log(this);
-            jQuery.get("/ir?code="+this.data,function(res){
+            jQuery.get("/ir?code="+jQuery(this).attr("data"),function(res){
                 console.log(res);
             })
             
