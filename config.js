@@ -205,10 +205,12 @@ jQuery(document).ready(function() {
         devices: devices
     }, document.getElementById("content"));
 
+    
     jQuery(".commands-item").click(function() {
-        console.log(this);
+        jQuery('#loading').show();
         jQuery.get("/ir?code=" + jQuery(this).attr("data"), function(res) {
             console.log(res);
+            jQuery('#loading').hide();
         })
 
     })
