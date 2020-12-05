@@ -197,6 +197,7 @@ void debugWIFI() {
     Serial.print("IP address: ");
     Serial.println(WiFi.localIP());
 }
+
 void setup(void)
 {
   irsend.begin();
