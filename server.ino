@@ -20,7 +20,6 @@
 #endif
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
-#include <ESP8266mDNS.h>
 #include <IRremoteESP8266.h>
 #include <IRsend.h>
 #include <WiFiClient.h>
@@ -31,7 +30,6 @@
 using namespace std;
 const char *ssid = "10012503";
 const char *password = "gd10012503";
-MDNSResponder mdns;
 
 ESP8266WebServer server(80);
 
@@ -45,14 +43,12 @@ void handleRoot()
               "<head><title>ESP8266 Demo</title></head>"
               "<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\">"
               "<body>"
-              "<h1>Hello from ESP8266, you can send NEC encoded IR"
-              "signals from here!</h1>"
-              "<p><a href=\"ir?code=551489775\">Send 20DF10EF</a></p>"
-              "<p><a href=\"ir?code=16429347\">Send 0xFAB123</a></p>"
-              "<p><a href=\"ir?code=16771222\">Send 0xFFE896</a></p>"
-              "<p><a href=\"ir?code=16771222\">Box 40 AF 01 TurnOff</a></p>"
-              "<p><a href=\"ir?code=16771222\">00 FF 40 TurnOff</a></p>"
-              "<p><a href=\"ir?code=404,423,0156\">TV F10E0E0C TurnOff</a></p>"
+              "<h1>控制中心</h1>"
+              "<div>Loading</div>"
+              "<script src='https://libs.baidu.com/jquery/2.0.0/jquery.min.js'></script>"
+              "<script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js'></script>"
+              "<script src='://esp8266.gulusoft.com/config.js'></script>"
+              "<div id='content'></div>"
               "</body>"
               "</html>");
 }
@@ -129,29 +125,94 @@ void handleNotFound()
   server.send(404, "text/plain", message);
 }
 
+
+bool autoConfig()
+{
+    int a = 0;
+    WiFi.begin();
+        while ( WiFi.status() != WL_CONNECTED )
+        {
+            Serial.println( "AutoConfig Success" );
+            Serial.printf( "SSID:%s\r\n", WiFi.SSID().c_str() );
+            Serial.printf( "PSW:%s\r\n", WiFi.psk().c_str() );
+            WiFi.printDiag( Serial );
+            delay( 1000 );
+            a++;
+            if ( a == 10 )
+            {
+                a = 0;
+                return(false);
+                break;
+            }
+        }
+        if ( false )
+        {
+            Serial.println( "" );
+            Serial.println( "wifi line faild !" );
+        }else  {
+            Serial.println( "" );
+            Serial.println( "WiFi connected" );
+            Serial.println( "IP address: " );
+            Serial.println( WiFi.localIP() );
+            return(true);
+        }
+}
+void smartConfig()
+{
+    WiFi.mode( WIFI_STA );
+    Serial.println( "\r\nWait for Smartconfig" );
+    WiFi.beginSmartConfig();
+    while ( 1 )
+    {
+        Serial.print( "Wait soft line..\r\n" );
+        if ( WiFi.smartConfigDone() )
+        {
+            Serial.println( "SmartConfig Success" );
+            Serial.printf( "SSID:%s\r\n", WiFi.SSID().c_str() );
+            Serial.printf( "PSW:%s\r\n", WiFi.psk().c_str() );
+            WiFi.setAutoConnect( true ); /* 设置自动连接 */
+            break;
+        }
+        delay( 1000 );
+    }
+    Serial.println( "" );
+    Serial.println( "WiFi connected" );
+    Serial.println( "IP address: " );
+    Serial.println( WiFi.localIP() );
+}
+
+void debugWIFI() {
+  WiFi.begin(ssid, password);
+    Serial.println("");
+    // Wait for connection
+    while (WiFi.status() != WL_CONNECTED)
+    {
+      delay(500);
+      Serial.print(".");
+    }
+    Serial.println("");
+    Serial.print("Connected to ");
+    Serial.println(ssid);
+    Serial.print("IP address: ");
+    Serial.println(WiFi.localIP());
+}
 void setup(void)
 {
   irsend.begin();
 
   Serial.begin(115200);
-  WiFi.begin(ssid, password);
+  //WiFi.begin(ssid, password);
   Serial.println("");
 
-  // Wait for connection
-  while (WiFi.status() != WL_CONNECTED)
-  {
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println("");
-  Serial.print("Connected to ");
-  Serial.println(ssid);
-  Serial.print("IP address: ");
-  Serial.println(WiFi.localIP());
-
-  if (mdns.begin("esp8266", WiFi.localIP()))
-  {
-    Serial.println("MDNS responder started");
+  int DEBUG = 0;
+  if(DEBUG == 1) {
+    debugWIFI();
+  } else {
+    if ( !autoConfig() )
+    {
+        Serial.println( "Start AP mode" );
+        smartConfig();
+    }
   }
 
   server.on("/", handleRoot);
