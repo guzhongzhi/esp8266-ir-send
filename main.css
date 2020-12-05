@@ -29,6 +29,10 @@ a {
     text-decoration:none;
 }
 
+.loading {
+    font-size:12px;
+}
+
 #content {
     padding-top:80px;
 }
