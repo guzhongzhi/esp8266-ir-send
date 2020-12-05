@@ -18,10 +18,9 @@ jQuery(document).ready(function(){
     var content = '<ul data-bind="foreach: devices" class="devices"> \
     <li> \
         <b data-bind="text: name"></b> \
-        <b data-bind="text: commands"></b> \
         <ul data-bind="foreach: commands" class="commands"> \
             <li> \
-            <a href="javascript:void(0)" class="commands-item" data-bind="attr: {data:value,text:label}"> </a> \
+            <a href="javascript:void(0)" class="commands-item" data-bind="attr: {data:value},text:label"> </a> \
             </li> \
         </ul> \
     </li> \
