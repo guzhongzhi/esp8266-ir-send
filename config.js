@@ -1,4 +1,4 @@
-var Devices = [
+var devices = [
     {
         name:"客厅电视",
         commands:[
@@ -21,7 +21,8 @@ jQuery(document).ready(function(){
     </li> \
 </ul>'
         jQuery('#content').html(content);
-        ko.applyBindings({ Devices: Devices }, document.getElementById("txn-details"));
+        
+        ko.applyBindings({Devices:Devices}, document.getElementById("content"));
 
     
 })
