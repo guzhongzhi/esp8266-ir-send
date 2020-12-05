@@ -15,14 +15,14 @@ var devices = [
     }
 ]
 jQuery(document).ready(function(){
-    var content = '<ul data-bind="foreach: Devices"> \
+    var content = '<ul data-bind="foreach: devices"> \
     <li> \
         The current item is: <b data-bind="text: name"></b> \
     </li> \
 </ul>'
         jQuery('#content').html(content);
         
-        ko.applyBindings({Devices:Devices}, document.getElementById("content"));
+        ko.applyBindings({devices:devices}, document.getElementById("content"));
 
     
 })
