@@ -19,6 +19,11 @@ jQuery(document).ready(function(){
     <li> \
         <b data-bind="text: name"></b> \
         <b data-bind="text: commands"></b> \
+        <ul data-bind="foreach: commands" class="commands"> \
+            <li> \
+            <span data-bind="text: label"> </span> \
+            </li> \
+        </ul> \
     </li> \
 </ul>'
         jQuery('#content').html(content);
