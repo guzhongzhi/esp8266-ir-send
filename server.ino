@@ -44,7 +44,7 @@ void handleRoot()
               "<meta http-equiv=\"Content-Type\" content=\"text/html;charset=utf-8\">"
               "<meta name='viewport' content='width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'/>"
               "<body>"
-              "<h1>控制中心</h1>"
+              "<div class='title'><h1>控制中心</h1></div>"
               "<div id='loading'>Loading</div>"
               "<script src='https://libs.baidu.com/jquery/2.0.0/jquery.min.js'></script>"
               "<script src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js'></script>"
